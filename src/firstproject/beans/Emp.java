@@ -1,15 +1,36 @@
 package firstproject.beans;
 
 import java.util.Date;
+import javax.persistence.*;
+import firstproject.beans.Employee;
 
+@Entity
+@Table(name="activities")
 public class Emp {
 	
+	@Id  
+	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@Column(name="id")
+	
 	private int id;  
-	private String name;  
-	private int hours;  
-	private Date date; 
+	
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="hours")
+	private int hours;
+	
+//	private Employee employee;
+//	private Date date; 
 //	private static final AtomicInteger count = new AtomicInteger(0); 
 	  
+//	public Employee getEmployee() {  
+//	    return employee;  
+//	}  
+//	public void setEmployee(Employee employee) {  
+//	    this.employee = employee;  
+//	}
+	
 	public Emp() {}  
 	  
 	public Emp(String name, int hours) {  
@@ -38,11 +59,11 @@ public class Emp {
 	public void setHours(int hours) {  
 	    this.hours = hours;  
 	}  
-	public Date getDate() {  
-	    return date;  
-	}  
-	public void setDate(Date date) {  
-	    this.date = date;  
-	}  
+//	public Date getDate() {  
+//	    return date;  
+//	}  
+//	public void setDate(Date date) {  
+//	    this.date = date;  
+//	}  
 
 }

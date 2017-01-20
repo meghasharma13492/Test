@@ -1,6 +1,10 @@
 package firstproject.dao;
 import java.util.*;  
-import org.springframework.orm.hibernate3.HibernateTemplate;  
+
+import javax.transaction.Transactional;
+
+import org.springframework.orm.hibernate4.HibernateTemplate;  
+
 import firstproject.beans.Employee;
 
 public class EmployeeDao {
@@ -21,6 +25,7 @@ public class EmployeeDao {
 	public void save(Employee e){  
 	    template.save(e);  
 	}  
+	@Transactional
 	//method to update employee  
 	public void update(Employee e){  
 	    template.update(e);  

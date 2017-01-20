@@ -2,10 +2,14 @@ package firstproject.controllers;
 import java.util.*;  
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;  
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;  
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.core.userdetails.User;
 
+import firstproject.beans.Emp;
 import firstproject.beans.Employee;
 import firstproject.dao.EmployeeDao;
 @Controller  
@@ -50,6 +54,25 @@ public class EmployeeController {
         empDao.update(teamToUpdate);
 //        empDao.update(Employee);
         return new ModelAndView("redirect:/employees");//will redirect to viewemp request mapping  
+    }
+    
+    @RequestMapping(value = "/activities", method = RequestMethod.GET)
+    public ModelAndView activitiesId() {
+    	 User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+         String name = user.getUsername();
+//         int id = user.getUserId();
+    	System.out.println(name+"name==========>");
+    	int Id = 4;
+    	System.out.println("hi its coming"+Id);
+    	Employee employee =empDao.getById(Id);
+    	List<Emp> list=employee.getActivities();
+	    Iterator<Emp> l= list.iterator();
+	    while(l.hasNext()){
+	    	System.out.println(l.next().getName());
+	    	System.out.println(l.next().getHours());
+	    }
+        System.out.println(employee.getfirstName()+" "+employee.getlastName());
+        return new ModelAndView("listEmployees","list",list);  
     }
     
 //    @RequestMapping(value="delete/{Id}",method=RequestMethod.GET)

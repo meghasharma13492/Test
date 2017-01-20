@@ -1,10 +1,38 @@
 package firstproject.beans;
 
+import java.util.List;
+
+import javax.persistence.*;
+
+
+import firstproject.beans.Emp;
+
+@Entity
+@Table(name="employees")
 public class Employee {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@Column(name="id")
 	private int id;
+	
+	@Column(name="firstName")
 	private String firstName;
+	
+	@Column(name="lastName")
 	private String lastName;
+	
+//	@OneToMany(targetEntity=Emp.class, mappedBy="employee", fetch=FetchType.EAGER)
+//	private List<Emp> activities;
+//	
+//	 @OneToMany(cascade=CascadeType.ALL)
+//	 @JoinColumn(name="employee_id")
+//	private List<Emp> activities;  
+	
+//	@Access(AccessType.PROPERTY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="employee_id")
+	private List<Emp> activities;
 	
 	public int getId() {  
 	    return id;  
@@ -23,5 +51,11 @@ public class Employee {
 	}  
 	public void setlastName(String lastName) {  
 	    this.lastName = lastName;  
+	}
+	public void setActivities(List<Emp> activities) {  
+	    this.activities = activities;  
+	}  
+	public List<Emp> getActivities() {  
+	    return activities;  
 	}  
 }

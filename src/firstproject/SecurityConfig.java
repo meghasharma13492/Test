@@ -12,20 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	DataSource dataSource;
-	
-	
-	@Bean
-	public JdbcUserDetailsManager userDetailsManager() {
-	    JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
-	    manager.setDataSource((javax.sql.DataSource) dataSource);
-	    manager.setUsersByUsernameQuery(
-	        "select firstname,lastname from employees where firstname=?");
-//	    manager.setAuthoritiesByUsernameQuery(
-//	        "select username, role from user_roles where firstname=?");
-	    manager.setRolePrefix("ROLE_USER");
-	    return manager;
-	}
-	
+
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //		auth

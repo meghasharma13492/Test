@@ -4,6 +4,19 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
 <hibernate-mapping>  
+<class name="firstproject.beans.Employee" table="employees">  
+          <id name="id">  
+          <generator class="assigned"></generator>  
+          </id>  
+            
+          <property name="firstName"></property>  
+          <property name="lastName"></property>  
+          <list name="activities" table="activities" cascade="all">  
+          <key column="employee_id"></key>  
+          <index column="employee_id"></index>    
+           <one-to-many class="firstproject.Emp"/>  
+          </list> 
+</class>  
 <class name="firstproject.beans.Emp" table="activities">  
           <id name="id">  
           <generator class="assigned"></generator>  
@@ -12,13 +25,6 @@
           <property name="name"></property>  
           <property name="hours"></property>  
 </class>  
-<class name="firstproject.beans.Employee" table="employees">  
-          <id name="id">  
-          <generator class="assigned"></generator>  
-          </id>  
-            
-          <property name="firstName"></property>  
-          <property name="lastName"></property>  
-</class>  
+
             
 </hibernate-mapping>  

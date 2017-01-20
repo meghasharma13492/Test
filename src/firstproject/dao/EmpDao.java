@@ -3,10 +3,15 @@ package firstproject.dao;
 
 import java.util.*;  
 
-import org.springframework.orm.hibernate3.HibernateTemplate;  
+import org.springframework.orm.hibernate4.HibernateTemplate;  
+
+
+import org.springframework.transaction.annotation.Transactional;
 
 //import test.Employee;
 import firstproject.beans.Emp;
+
+@Transactional(readOnly = false)
 
 public class EmpDao {
 	

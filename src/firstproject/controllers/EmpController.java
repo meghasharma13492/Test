@@ -1,8 +1,11 @@
 package firstproject.controllers;
 import java.util.ArrayList;  
+import java.util.Iterator;
 import java.util.List;  
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;  
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import firstproject.beans.Emp;
 import firstproject.dao.EmpDao;
+import firstproject.beans.Employee;
+import firstproject.dao.EmployeeDao;
 @Controller  
 @RequestMapping("/activities")
 public class EmpController {
@@ -22,11 +27,30 @@ public class EmpController {
 //  @RequestMapping("/viewemp")  
 	@Autowired  
     EmpDao dao;
+	
+	@Autowired 
+	EmployeeDao empDao;
+	
   @RequestMapping(method = RequestMethod.GET)
   public ModelAndView viewemp(){
-	  List<Emp> list=dao.getEmployees();
-	  System.out.println("comfuinf un ");
-	 return new ModelAndView("listEmployees","list",list);  
+//	  List<Emp> list=dao.getEmployees();
+//	  System.out.println("comfuinf un ");
+//	 return new ModelAndView("listEmployees","list",list);  
+  	 User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+     String name = user.getUsername();
+//     int id = user.getUserId();
+	System.out.println(name+"name==========>");
+	int Id = 4;
+	System.out.println("hi its coming"+Id);
+	Employee employee =empDao.getById(Id);
+	List<Emp> list=employee.getActivities();
+    Iterator<Emp> l= list.iterator();
+    while(l.hasNext()){
+    	System.out.println(l.next().getName());
+    	System.out.println(l.next().getHours());
+    }
+    System.out.println(employee.getfirstName()+" "+employee.getlastName());
+    return new ModelAndView("listEmployees","list",list);  
   }  
   
 //	@RequestMapping("/empform")  
