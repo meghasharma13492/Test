@@ -21,6 +21,20 @@ public class EmployeeDao {
 	    return list;  
 	} 
 	
+	public Employee findByNamedParam(String name){  
+		System.out.println("nameeeeeeeeeeeeeeee0"+name);
+	String query = "from Employee where firstName =:firstName";
+	@SuppressWarnings("unchecked")
+	List<Employee> list = (List<Employee>) template.findByNamedParam(query, "firstName", name);
+    Employee user = new Employee();  
+    if(!list.isEmpty()){
+//    	System.out.println(l.next().getId()+"METHEHHHHHHHHHHHHHHHHHHHHHHH");
+    	System.out.println(list.get(0).getId());
+    	user = list.get(0);
+    }
+	return user;
+	}
+	
 	//method to save employee  
 	public void save(Employee e){  
 	    template.save(e);  

@@ -37,12 +37,8 @@ public class EmpController {
 //	  System.out.println("comfuinf un ");
 //	 return new ModelAndView("listEmployees","list",list);  
   	 User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-     String name = user.getUsername();
-//     int id = user.getUserId();
-	System.out.println(name+"name==========>");
-	int Id = 4;
-	System.out.println("hi its coming"+Id);
-	Employee employee =empDao.getById(Id);
+	 String name = user.getUsername();
+     Employee employee = empDao.findByNamedParam(name);
 	List<Emp> list=employee.getActivities();
     Iterator<Emp> l= list.iterator();
     while(l.hasNext()){
