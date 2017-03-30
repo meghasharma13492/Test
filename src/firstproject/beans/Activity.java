@@ -6,7 +6,7 @@ import firstproject.beans.Employee;
 
 @Entity
 @Table(name="activities")
-public class Emp {
+public class Activity {
 	
 	@Id  
 	@GeneratedValue(strategy=GenerationType.AUTO) 
@@ -20,20 +20,23 @@ public class Emp {
 	@Column(name="hours")
 	private int hours;
 	
-//	private Employee employee;
+	@Column(name="employee_id")
+	private int employee_id;
+	
+	private Employee employee;
 //	private Date date; 
 //	private static final AtomicInteger count = new AtomicInteger(0); 
 	  
-//	public Employee getEmployee() {  
-//	    return employee;  
-//	}  
-//	public void setEmployee(Employee employee) {  
-//	    this.employee = employee;  
-//	}
+	public Employee getEmployee() {  
+	    return employee;  
+	}  
+	public void setEmployee(Employee employee) {  
+	    this.employee = employee;  
+	}
 	
-	public Emp() {}  
+	public Activity() {}  
 	  
-	public Emp(String name, int hours) {  
+	public Activity(String name, int hours) {  
 	    super();  
 //	    this.id = id;  
 	    this.name = name;  
@@ -59,6 +62,12 @@ public class Emp {
 	public void setHours(int hours) {  
 	    this.hours = hours;  
 	}  
+//	public int getEmployeeId() {  
+//	    return employee_id;  
+//	}  
+//	public void setEmployeeId(int employee_id) {  
+//	    this.employee_id = employee_id;  
+//	} 
 //	public Date getDate() {  
 //	    return date;  
 //	}  

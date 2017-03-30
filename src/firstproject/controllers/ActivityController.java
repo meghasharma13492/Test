@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;  
 import org.springframework.web.servlet.ModelAndView;  
 
-import firstproject.beans.Emp;
-import firstproject.dao.EmpDao;
+import firstproject.beans.Activity;
+import firstproject.dao.ActivityDao;
 import firstproject.beans.Employee;
 import firstproject.dao.EmployeeDao;
 @Controller  
 @RequestMapping("/activities")
-public class EmpController {
+public class ActivityController {
 
 	
 //  @RequestMapping("/viewemp")  
 	@Autowired  
-    EmpDao dao;
+    ActivityDao dao;
 	
 	@Autowired 
 	EmployeeDao empDao;
@@ -39,39 +39,41 @@ public class EmpController {
   	 User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	 String name = user.getUsername();
      Employee employee = empDao.findByNamedParam(name);
-	List<Emp> list=employee.getActivities();
-    Iterator<Emp> l= list.iterator();
+	List<Activity> list=employee.getActivities();
+    Iterator<Activity> l= list.iterator();
     while(l.hasNext()){
     	System.out.println(l.next().getName());
     	System.out.println(l.next().getHours());
     }
     System.out.println(employee.getfirstName()+" "+employee.getlastName());
-    return new ModelAndView("listEmployees","list",list);  
+    return new ModelAndView("listActivities","list",list);  
   }  
   
 //	@RequestMapping("/empform")  
 	@RequestMapping(value="/new", method = RequestMethod.GET)
     public ModelAndView showform(){  
-        return new ModelAndView("empform","command",new Emp());  
+		Activity activity = new Activity();
+//		activity.setEmployeeId(4);
+        return new ModelAndView("activityForm","command",activity);  
     }  
-    @RequestMapping(value="/createEmployee",method = RequestMethod.POST)  
-    public ModelAndView save(@ModelAttribute("emp") Emp emp){
+    @RequestMapping(value="/createActivity",method = RequestMethod.POST)  
+    public ModelAndView save(@ModelAttribute("emp") Activity emp){
         dao.save(emp);
-        return new ModelAndView("redirect:/employees");//will redirect to viewemp request mapping  
+        return new ModelAndView("redirect:/activities");//will redirect to viewemp request mapping  
     }
     
     @RequestMapping(value = "/{Id}/edit", method = RequestMethod.GET)
     public ModelAndView getForId(@PathVariable int Id) {
     	System.out.println("hi its coming"+Id);
-    	Emp employee =dao.getById(Id);
-        System.out.println(employee.getName()+" "+employee.getHours());
-        return new ModelAndView("viewemp","employee",employee);  
+    	Activity activity =dao.getById(Id);
+        System.out.println(activity.getName()+" "+activity.getHours());
+        return new ModelAndView("viewactivity","activity",activity);  
     }
     
     @RequestMapping(value = "/{Id}/update", method = RequestMethod.POST)
-    public ModelAndView update(@ModelAttribute("emp") Emp emp,@PathVariable int Id){
+    public ModelAndView update(@ModelAttribute("emp") Activity emp,@PathVariable int Id){
     	System.out.println("comingi n update===>" +Id);
-    	Emp teamToUpdate = dao.getById(Id);
+    	Activity teamToUpdate = dao.getById(Id);
         teamToUpdate.setHours(emp.getHours());
         teamToUpdate.setName(emp.getName());
         dao.update(teamToUpdate);

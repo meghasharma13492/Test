@@ -8,9 +8,9 @@
   <input type="submit" value="Log out" />
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
-
+<a href="activities/new">Add Activity</a>   
 <table>
-<p>The length of the companies collection is : ${fn:length(list)}</p>  
+<p>The length of the activities collection is : ${fn:length(list)}</p>  
 <tr><th>Id</th><th>Name</th><th>Hour</th><th>Date</th></tr>  
    <c:forEach var="emp" items="${list}">   
    <tr>  

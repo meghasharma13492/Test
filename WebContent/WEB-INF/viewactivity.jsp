@@ -1,12 +1,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>    
   
-       <form:form method="post" action="createEmployee">    
+       <form:form method="POST" commandName="activity" action="update">    
         <table >
-        <tr>    
-          <td>Id : </td>   
-          <td><form:input path="id" /></td>  
-         </tr>     
          <tr>    
           <td>Name : </td>   
           <td><form:input path="name"  /></td>  

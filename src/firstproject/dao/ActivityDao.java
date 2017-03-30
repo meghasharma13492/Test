@@ -9,11 +9,11 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 //import test.Employee;
-import firstproject.beans.Emp;
+import firstproject.beans.Activity;
 
 @Transactional(readOnly = false)
 
-public class EmpDao {
+public class ActivityDao {
 	
 //	Using JDBC Template
 	
@@ -62,28 +62,28 @@ public class EmpDao {
 	    this.template = template;  
 	}  
 	
-	public List<Emp> getEmployees(){  
-	    List<Emp> list=new ArrayList<Emp>();  
-	    list=template.loadAll(Emp.class);  
+	public List<Activity> getEmployees(){  
+	    List<Activity> list=new ArrayList<Activity>();  
+	    list=template.loadAll(Activity.class);  
 	    return list;  
 	} 
 	
-	//method to save employee  
-	public void save(Emp e){  
+	//method to save activity  
+	public void save(Activity e){  
 	    template.save(e);  
 	}  
-	//method to update employee  
-	public void update(Emp e){  
+	//method to update activity  
+	public void update(Activity e){  
 	    template.update(e);  
 	}  
-	//method to delete employee  
+	//method to delete activity  
 	public void delete(int id){  
-		Emp e=(Emp)template.get(Emp.class,id);  
+		Activity e=(Activity)template.get(Activity.class,id);  
 	    template.delete(e);  
 	}  
-	//method to return one employee of given id  
-	public Emp getById(int id){  
-	    Emp e=(Emp)template.get(Emp.class,id);  
+	//method to return one activity of given id  
+	public Activity getById(int id){  
+		Activity e=(Activity)template.get(Activity.class,id);  
 	    return e;  
 	}  
 

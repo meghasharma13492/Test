@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="activities">List of employees</a>
-<a href="activities/new">Add Employee</a>   
-<a href="login">Login</a>   
+<a href="activities">List of activities</a>
+<a href="activities/new">Add Activity</a>   
+<c:url var="logoutUrl" value="/logout"/>
+<form action="${logoutUrl}" method="post">
+  <input type="submit" value="Log out" />
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>  
 </body>
 </html>

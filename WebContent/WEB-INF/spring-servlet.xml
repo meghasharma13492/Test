@@ -39,7 +39,7 @@ http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
       <property name="annotatedClasses">
          	<list>
-                <value>firstproject.beans.Emp</value>
+                <value>firstproject.beans.Activity</value>
                 <value>firstproject.beans.Employee</value>
         	</list>
  	</property>
@@ -66,7 +66,7 @@ http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 <property name="sessionFactory" ref="mysessionFactory" /> 
 </bean> 
       
-    <bean id="dao" class="firstproject.dao.EmpDao">  
+    <bean id="dao" class="firstproject.dao.ActivityDao">  
     <property name="template" ref="template"></property>  
     </bean>  
     

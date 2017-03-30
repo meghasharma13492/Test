@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 
-import firstproject.beans.Emp;
+import firstproject.beans.Activity;
 
 @Entity
 @Table(name="employees")
@@ -32,7 +32,7 @@ public class Employee {
 //	@Access(AccessType.PROPERTY)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="employee_id")
-	private List<Emp> activities;
+	private List<Activity> activities;
 	
 	public int getId() {  
 	    return id;  
@@ -52,10 +52,10 @@ public class Employee {
 	public void setlastName(String lastName) {  
 	    this.lastName = lastName;  
 	}
-	public void setActivities(List<Emp> activities) {  
+	public void setActivities(List<Activity> activities) {  
 	    this.activities = activities;  
 	}  
-	public List<Emp> getActivities() {  
+	public List<Activity> getActivities() {  
 	    return activities;  
 	}  
 }

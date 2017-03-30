@@ -9,7 +9,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.userdetails.User;
 
-import firstproject.beans.Emp;
+import firstproject.beans.Activity;
 import firstproject.beans.Employee;
 import firstproject.dao.EmployeeDao;
 @Controller  
@@ -65,14 +65,14 @@ public class EmployeeController {
     	int Id = 4;
     	System.out.println("hi its coming"+Id);
     	Employee employee =empDao.getById(Id);
-    	List<Emp> list=employee.getActivities();
-	    Iterator<Emp> l= list.iterator();
+    	List<Activity> list=employee.getActivities();
+	    Iterator<Activity> l= list.iterator();
 	    while(l.hasNext()){
 	    	System.out.println(l.next().getName());
 	    	System.out.println(l.next().getHours());
 	    }
         System.out.println(employee.getfirstName()+" "+employee.getlastName());
-        return new ModelAndView("listEmployees","list",list);  
+        return new ModelAndView("listActvities","list",list);  
     }
     
 //    @RequestMapping(value="delete/{Id}",method=RequestMethod.GET)
