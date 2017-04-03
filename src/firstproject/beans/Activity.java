@@ -23,16 +23,16 @@ public class Activity {
 	@Column(name="employee_id")
 	private int employee_id;
 	
-	private Employee employee;
+//	private Employee employee;
 //	private Date date; 
 //	private static final AtomicInteger count = new AtomicInteger(0); 
 	  
-	public Employee getEmployee() {  
-	    return employee;  
-	}  
-	public void setEmployee(Employee employee) {  
-	    this.employee = employee;  
-	}
+//	public Employee getEmployee() {  
+//	    return employee;  
+//	}  
+//	public void setEmployee(Employee employee) {  
+//	    this.employee = employee;  
+//	}
 	
 	public Activity() {}  
 	  
@@ -62,12 +62,12 @@ public class Activity {
 	public void setHours(int hours) {  
 	    this.hours = hours;  
 	}  
-//	public int getEmployeeId() {  
-//	    return employee_id;  
-//	}  
-//	public void setEmployeeId(int employee_id) {  
-//	    this.employee_id = employee_id;  
-//	} 
+	public int getEmployeeId() {  
+	    return employee_id;  
+	}  
+	public void setEmployeeId(int employee_id) {  
+	    this.employee_id = employee_id;  
+	} 
 //	public Date getDate() {  
 //	    return date;  
 //	}  

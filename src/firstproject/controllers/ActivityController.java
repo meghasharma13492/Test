@@ -53,7 +53,7 @@ public class ActivityController {
 	@RequestMapping(value="/new", method = RequestMethod.GET)
     public ModelAndView showform(){  
 		Activity activity = new Activity();
-//		activity.setEmployeeId(4);
+		activity.setEmployeeId(4);
         return new ModelAndView("activityForm","command",activity);  
     }  
     @RequestMapping(value="/createActivity",method = RequestMethod.POST)  
