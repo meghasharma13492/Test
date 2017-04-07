@@ -23,8 +23,6 @@ import firstproject.dao.EmployeeDao;
 @RequestMapping("/activities")
 public class ActivityController {
 
-	
-//  @RequestMapping("/viewemp")  
 	@Autowired  
     ActivityDao dao;
 	
@@ -40,12 +38,6 @@ public class ActivityController {
 	 String name = user.getUsername();
      Employee employee = empDao.findByNamedParam(name);
 	List<Activity> list=employee.getActivities();
-    Iterator<Activity> l= list.iterator();
-    while(l.hasNext()){
-    	System.out.println(l.next().getName());
-    	System.out.println(l.next().getHours());
-    }
-    System.out.println(employee.getfirstName()+" "+employee.getlastName());
     return new ModelAndView("listActivities","list",list);  
   }  
   

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%> 
-<link rel="stylesheet" type="text/css" href="/FirstProject/resources/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/>
 <script src="<c:url value='/resources/js/jquery.min.js' />"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js' />"></script>    
  <div class="container-fluid">
@@ -9,13 +9,15 @@
           <div class="form-group">
 		    <label class="control-label col-sm-2" for="name">Name:</label>
 		    <div class="col-sm-4">
-		    <input type="text" name="name" class="form-control" id="name">
+		    <form:input path="name" class="form-control"/>
+		    <%-- <input type="text" name="name" class="form-control" value=<%=activity.name%> id="name"> --%>
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="hours">Hours:</label>
 		    <div class="col-sm-4">
-		    <input type="text" name="hours" class="form-control" id="hours">
+		    <form:input path="hours" class="form-control"/>
+		    <!-- <input type="text" name="hours" class="form-control" id="hours" value="hours"> -->
 		    </div>
 		  </div>
 		 <div class="form-group"> 
@@ -24,4 +26,6 @@
  			</div>
  		</div>
        </form:form>    
+       <a href="/FirstProject/activities">Back to activities</a>
 </div>
+
